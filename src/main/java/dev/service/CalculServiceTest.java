@@ -2,9 +2,12 @@ package dev.service;
 
 import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import static org.assertj.core.api.Assertions.*;
 
 import dev.exception.CalculException;
 
@@ -13,9 +16,11 @@ import dev.exception.CalculException;
  */
 public class CalculServiceTest {
 	private static final Logger LOG = LoggerFactory.getLogger(CalculServiceTest.class);
+	@Rule
+	 public final ExpectedException exception = ExpectedException.none();
 
 	@Test
-	public void testAdditionner() throws CalculException {
+	public void testAdditionner() throws CalculException{
 		LOG.info("Etant donné, une instance de la classe CalculService"); 
 		//TODO
 		CalculService service = new CalculService();
@@ -25,7 +30,8 @@ public class CalculServiceTest {
 
 		LOG.info("Alors j'obtiens le résultat 8");
 		// TODO
-		assertEquals(8, somme);
+		assertThat(somme).isEqualTo(8);
+		
 
 	}
 }

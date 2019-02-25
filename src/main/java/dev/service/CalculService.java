@@ -26,7 +26,8 @@ public class CalculService{
 				somme = Integer.valueOf(matcher.group(1)) + Integer.valueOf(matcher.group(2))+  Integer.valueOf(matcher.group(3));
 			}
 		}catch(Exception e){
-			throw new CalculException("Expression non valide");	
+			somme = 0;
+			throw new CalculException("Expression non valide");
 		}
 		
 		return somme;
