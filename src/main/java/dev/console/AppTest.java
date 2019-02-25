@@ -2,8 +2,6 @@ package dev.console;
 
 import dev.exception.CalculException;
 import dev.service.CalculService;
-import dev.service.CalculServiceTest;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Scanner;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
-
+/**
+ * Test unitaire de la classe dev.console.APP.
+ */
 public class AppTest {
 	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
@@ -55,11 +55,15 @@ public class AppTest {
 	
 	@Test
 	public void expressionNonValide() throws Exception{
-		LOG.info("Etant donné, un service CalculService qui retourne 35 à l'évaluation de l'expression 1+34");
-		String expression = "1+34";
+		LOG.info("L'évaluation de l'expression 1+34");
+		String expression = "1+34l";
 		when(calculService.additionner(expression)).thenThrow(CalculException.class);
 		LOG.info("L'expression {} est invalide", expression);
 	}
 
+	@Test	
+	public void demarrerTest() throws Exception{
+		this.app.demarrer();
+	}
 
 }
